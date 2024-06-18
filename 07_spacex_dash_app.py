@@ -58,11 +58,11 @@ app.layout = html.Div(children=[
 def get_pie_chart(entered_site):
     
     if entered_site == 'ALL':
-        filtered_df = spacex_df.copy()
+        filtered_df = spacex_df[spacex_df['class'] == 1].copy()
         counts = filtered_df['Booster Version Category'].value_counts()
         fig = px.pie(values = counts, 
                      names = counts.index,
-                     title = 'Total Successful Launches By Site')
+                     title = 'Total Successful Launches for All Sites by Boost Version')
     else:
         filtered_df = spacex_df[(spacex_df['Launch Site'] == entered_site)]
         counts = filtered_df['class'].value_counts()
